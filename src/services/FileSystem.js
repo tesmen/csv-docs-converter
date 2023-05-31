@@ -56,6 +56,10 @@ export class FileSystem {
     }
 
     readPathFiles(path) {
-        return fs.readdirSync(path)
+        const excludes = new Set([ '.gitkeep' ])
+
+        return fs
+            .readdirSync(path)
+            .filter(filename => !excludes.has(filename))
     }
 }

@@ -15,9 +15,9 @@ export class CsvParserApp {
     logger = ChalkedConsoleLogger
 
     constructor() {
-        this.csvParser = new LegacyCsvParser
         this.fileSystem = new FileSystem()
-        this.logger = new ChalkedConsoleLogger
+        this.logger = new ChalkedConsoleLogger()
+        this.csvParser = new LegacyCsvParser()
     }
 
     processFiles() {
@@ -34,11 +34,12 @@ export class CsvParserApp {
                 this.logger.info(`Reading ${inputFilePath}`)
 
                 const parsed = this.csvParser.parse(
-                    this.fileSystem.readFileContents(inputFilePath),
+                    this.fileSystem.readFileContents(inputFilePath).toString()
                 )
 
                 const outputFilePath = path.resolve(OUTPUT_FOLDER, fileName)
-                this.fileSystem.writeFileSync(outputFilePath)
+                this.logger.info(`Saving ${outputFilePath}`)
+                // this.fileSystem.writeFileSync(outputFilePath)
             } catch(e) {
                 this.logger.error(e.message, e.stack)
             }
