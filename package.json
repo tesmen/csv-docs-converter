@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/tesmen/csv-docs-converter/issues"
   },
-  "homepage": "https://github.com/tesmen/csv-docs-converter#readme"
+  "homepage": "https://github.com/tesmen/csv-docs-converter#readme",
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "fs": "0.0.1-security"
+  }
 }
