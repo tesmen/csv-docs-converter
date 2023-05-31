@@ -43,8 +43,6 @@ export class CsvParserApp {
             } catch(e) {
                 this.logger.error(e.message, e.stack)
             }
-
         }
     }
-
 }
