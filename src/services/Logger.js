@@ -10,8 +10,8 @@ export class ChalkedConsoleLogger {
         log(chalk.yellow(message))
     }
 
-    error(message) {
-        log(chalk.bgRed.white(message))
+    error(...message) {
+        log(chalk.bgRed.white(...message))
     }
 
     success(message) {

@@ -11,6 +11,10 @@ export class FileSystem {
             .readFileSync(path)
     }
 
+    /**
+     * @param {string} path
+     * @param {Buffer|string} content
+     */
     writeFileSync(path, content) {
         return fs
             .writeFileSync(path, content)

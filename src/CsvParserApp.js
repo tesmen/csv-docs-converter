@@ -34,16 +34,17 @@ export class CsvParserApp {
                 this.logger.info(`Reading ${inputFilePath}`)
 
                 const parsed = this.csvParser.parse(
-                    this.fileSystem.readFileContents(inputFilePath).toString()
+                    this.fileSystem.readFileContents(inputFilePath).toString(),
                 )
 
                 const outputFilePath = path.resolve(OUTPUT_FOLDER, fileName)
                 this.logger.info(`Saving ${outputFilePath}`)
-                // this.fileSystem.writeFileSync(outputFilePath)
+                this.fileSystem.writeFileSync(outputFilePath, parsed)
             } catch(e) {
                 this.logger.error(e.message, e.stack)
             }
 
         }
     }
+
 }
