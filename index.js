@@ -1,4 +1,7 @@
-import { CsvParserApp } from './src/CsvParserApp.js'
+import server from './src/Server.js'
 
-const app = new CsvParserApp()
-app.processFiles()
+const port = 3099
+
+server.listen(port, () => {
+    console.log(`Example app listening on port ${port}`)
+})
