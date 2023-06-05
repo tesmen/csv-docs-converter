@@ -12,13 +12,14 @@ server.get('/', (req, res) => {
 })
 
 server.post('/convert', upload.single('convert_file'), (req, res) => {
-    let file
+    let outputFileName
+
     if(req.file) {
-        file = converterApp.processFile(path.resolve(req.file.path))
+        outputFileName = converterApp.processFile(path.resolve(req.file.path))
     }
 
-    if(file) {
-        res.download(file)
+    if(outputFileName) {
+        res.download(outputFileName)
     }
 })
 
