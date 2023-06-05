@@ -14,7 +14,9 @@
 </style>
 
 <body>
-<form method="post" action="/convert">
+<form method="post" action="/convert" enctype="multipart/form-data">
+    <label for="convert_file">File</label>
+    <input type="file" id="convert_file" name="convert_file">
     <div style="width: 700px">
         <div>
             <div style="display: inline-block; width: 49%; vertical-align: top">

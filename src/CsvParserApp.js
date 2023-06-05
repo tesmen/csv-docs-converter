@@ -28,21 +28,25 @@ export class CsvParserApp {
         }
 
         for(const fileName of files) {
-            try {
-                const inputFilePath = path.resolve(INPUT_FOLDER, fileName)
+            this.processFile(fileName)
+        }
+    }
 
-                this.logger.info(`Reading ${inputFilePath}`)
+    processFile(fileName) {
+        try {
+            const inputFilePath = path.resolve(INPUT_FOLDER, fileName)
 
-                const parsed = this.csvParser.parse(
-                    this.fileSystem.readFileContents(inputFilePath).toString(),
-                )
+            this.logger.info(`Reading ${inputFilePath}`)
 
-                const outputFilePath = path.resolve(OUTPUT_FOLDER, fileName)
-                this.logger.info(`Saving ${outputFilePath}`)
-                this.fileSystem.writeFileSync(outputFilePath, parsed)
-            } catch(e) {
-                this.logger.error(e.message, e.stack)
-            }
+            const parsed = this.csvParser.parse(
+                this.fileSystem.readFileContents(inputFilePath).toString(),
+            )
+
+            const outputFilePath = path.resolve(OUTPUT_FOLDER, fileName)
+            this.logger.info(`Saving ${outputFilePath}`)
+            this.fileSystem.writeFileSync(outputFilePath, parsed)
+        } catch(e) {
+            this.logger.error(e.message, e.stack)
         }
     }
 }
