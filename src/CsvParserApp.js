@@ -33,6 +33,9 @@ export class CsvParserApp {
     }
 
     processFile(fileName) {
+        this.logger.info(`Processing ${fileName}`)
+        const outputName = path.basename(fileName)
+
         try {
             const inputFilePath = path.resolve(INPUT_FOLDER, fileName)
 
@@ -41,10 +44,11 @@ export class CsvParserApp {
             const parsed = this.csvParser.parse(
                 this.fileSystem.readFileContents(inputFilePath).toString(),
             )
-
-            const outputFilePath = path.resolve(OUTPUT_FOLDER, fileName)
+            const outputFilePath = path.resolve(OUTPUT_FOLDER, outputName + '.csv')
             this.logger.info(`Saving ${outputFilePath}`)
             this.fileSystem.writeFileSync(outputFilePath, parsed)
+
+            return outputFilePath
         } catch(e) {
             this.logger.error(e.message, e.stack)
         }
