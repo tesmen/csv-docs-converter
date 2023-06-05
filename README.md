@@ -1,6 +1,11 @@
 # CSV Docs Converter
 
-## Usage
+## Docker
+#### Simply run container 
+```docker-compose up```
+#### WEB should be available at http://localhost:3099/
+
+## Usage no-docker
 
 #### 1) Install dependencies 
 ```npm install```
@@ -12,3 +17,5 @@
 ```node index.js```
 
 #### 4) Processed files will appear in  [files-output](files-output)
+
+
